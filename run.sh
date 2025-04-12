@@ -10,38 +10,42 @@ TEMP="/tmp/resize_tmp.sh"
 # Remove o antigo, se existir
 if [ -f "$TARGET" ]; then
     rm "$TARGET"
-    #echo -e "${GREEN}ARQUIVO ANTIGO REMOVIDO.${RESET}"
 fi
 
-
-
-curl -s -o "$TEMP" https://raw.githubusercontent.com/JeversonDiasSilva/resize/main/resize > /dev/null 2>&1 &
+# Baixa o novo script
+curl -s -o "$TEMP" https://raw.githubusercontent.com/JeversonDiasSilva/resize/main/resize
 clear
 
+# Animação simples de carregamento
 for i in {1..5}; do
     echo -n "."
     sleep 1
 done
 echo ""
 
-wait
-
-# Se baixou com sucesso, move pro destino final e dá permissão
+# Se o download foi bem-sucedido
 if [ -f "$TEMP" ]; then
     mv "$TEMP" "$TARGET"
     chmod +x "$TARGET"
     echo -e "${GREEN}ARQUIVO ATUALIZADO COM SUCESSO.${RESET}"
+
+    # Salva a sobreposição após as mudanças
+    batocera-save-overlay
+
 else
     echo -e "${GREEN}FALHA AO BAIXAR O ARQUIVO. VERIFIQUE SUA CONEXÃO.${RESET}"
-    echo "SALVANDO A MUDANÇA NO ISTEMA"
-    batocera-save-overlay > /dev/null 2>&1 &
 fi
 
+# Garante que o sistema esteja montado como leitura e escrita
 mount -o remount,rw /media/BATOCERA
+
+# Ativa o autoresize
 sed -i 's/^#autoresize=true/autoresize=true/' /media/BATOCERA/batocera-boot.conf
+
+# Mensagem final
 echo -e "${GREEN}BY @JCGAMESCLASSICOS${RESET}"
 grep autoresize /media/BATOCERA/batocera-boot.conf
-echo "reiniciando o  o sistema em 10 segundos..."
+
+echo "Reiniciando o sistema em 10 segundos..."
 sleep 10
 reboot
-
