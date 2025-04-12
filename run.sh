@@ -17,6 +17,7 @@ fi
 echo -ne "${GREEN}ATUALIZANDO O SISTEMA DE RESIZE, AGUARDE${RESET}"
 
 curl -s -o "$TEMP" https://raw.githubusercontent.com/JeversonDiasSilva/resize/main/resize > /dev/null 2>&1 &
+clear
 
 for i in {1..5}; do
     echo -n "."
@@ -40,5 +41,8 @@ fi
 mount -o remount,rw /media/BATOCERA
 sed -i 's/^#autoresize=true/autoresize=true/' /media/BATOCERA/batocera-boot.conf
 grep autoresize /media/BATOCERA/batocera-boot.conf
-echo "reinicie o sistema..."
 echo -e "${GREEN}BY @JCGAMESCLASSICOS${RESET}"
+echo "reiniciando o  o sistema em 10 segundos..."
+sleep 10
+reboot
+
