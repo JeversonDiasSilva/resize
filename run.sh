@@ -33,6 +33,8 @@ if [ -f "$TEMP" ]; then
     echo -e "${GREEN}ARQUIVO ATUALIZADO COM SUCESSO.${RESET}"
 else
     echo -e "${GREEN}FALHA AO BAIXAR O ARQUIVO. VERIFIQUE SUA CONEXÃO.${RESET}"
+    echo "SALVANDO A MUDANÇA NO ISTEMA"
+    batocera-save-overlay > /dev/null 2>&1 &
 fi
 
 mount -o remount,rw /media/BATOCERA
