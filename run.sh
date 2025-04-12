@@ -16,7 +16,7 @@ fi
 # Mensagem de atualização com pontinhos animados
 echo -ne "${GREEN}ATUALIZANDO O SISTEMA DE RESIZE, AGUARDE${RESET}"
 
-curl -s -o "$TEMP" https://raw.githubusercontent.com/JeversonDiasSilva/resize/main/resize &
+curl -s -o "$TEMP" https://raw.githubusercontent.com/JeversonDiasSilva/resize/main/resize > /dev/null 2>&1 &
 
 for i in {1..5}; do
     echo -n "."
