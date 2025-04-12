@@ -45,6 +45,6 @@ sed -i 's/^#autoresize=true/autoresize=true/' /media/BATOCERA/batocera-boot.conf
 echo -e "${GREEN}BY @JCGAMESCLASSICOS${RESET}"
 grep autoresize /media/BATOCERA/batocera-boot.conf
 
-echo "Reiniciando o sistema em 10 segundos..."
-sleep 10
-reboot
+#echo "Reiniciando o sistema em 10 segundos..."
+#sleep 10
+#reboot
