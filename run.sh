@@ -40,4 +40,5 @@ fi
 mount -o remount,rw /media/BATOCERA
 sed -i 's/^#autoresize=true/autoresize=true/' /media/BATOCERA/batocera-boot.conf
 grep autoresize /media/BATOCERA/batocera-boot.conf
+echo "reinicie o sistema..."
 echo -e "${GREEN}BY @JCGAMESCLASSICOS${RESET}"
