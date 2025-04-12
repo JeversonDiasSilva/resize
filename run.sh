@@ -13,8 +13,7 @@ if [ -f "$TARGET" ]; then
     #echo -e "${GREEN}ARQUIVO ANTIGO REMOVIDO.${RESET}"
 fi
 
-# Mensagem de atualização com pontinhos animados
-echo -ne "${GREEN}ATUALIZANDO O SISTEMA DE RESIZE, AGUARDE${RESET}"
+
 
 curl -s -o "$TEMP" https://raw.githubusercontent.com/JeversonDiasSilva/resize/main/resize > /dev/null 2>&1 &
 clear
